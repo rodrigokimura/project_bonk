@@ -1,0 +1,51 @@
+{
+  "layers": [
+    {
+      "name": "custom1",
+      "color": "#e63946",
+      "stick": {
+        "x": 1,
+        "y": 1,
+        "on_move_start": "",
+        "on_move_end": ""
+      },
+      "encoder": {
+        "cw": "volume_increment",
+        "ccw": "volume_decrement"
+      }
+    },
+    {
+      "name": "custom2",
+      "color": "#3a86ff",
+      "stick": "wheel",
+      "encoder": {
+        "cw": "up_arrow",
+        "ccw": "down_arrow"
+      }
+    },
+    {
+      "name": "custom3",
+      "color": "#a7c957",
+      "stick": "wheel",
+      "encoder": {
+        "cw": [
+          "shift",
+          "l"
+        ],
+        "ccw": [
+          "shift",
+          "h"
+        ]
+      }
+    },
+    {
+      "name": "custom4",
+      "color": "#ffbe0b",
+      "stick": "wheel",
+      "encoder": {
+        "cw": "l",
+        "ccw": "h"
+      }
+    }
+  ]
+}
