@@ -9,7 +9,7 @@ import usb_hid
 from adafruit_hid.mouse import Mouse
 
 from keys import KeyWrapper
-from utils import parse_color
+from utils import load_config, parse_color
 
 """Pin mapping:
     clk: 13
@@ -123,21 +123,6 @@ class Knob:
         self.led.value = not self.led.value
         time.sleep(0.1)
         self.led.value = not self.led.value
-
-
-def load_config():
-    import json
-
-    with open("config.json") as file:
-        config = json.load(file)
-    layers = config.get("layers", [])
-    for layer in layers:
-        cw = layer.get("encoder", {}).get("cw")
-        layer["encoder"]["cw"] = KeyWrapper(cw)
-
-        ccw = layer.get("encoder", {}).get("ccw")
-        layer["encoder"]["ccw"] = KeyWrapper(ccw)
-    return config
 
 
 if __name__ == "__main__":

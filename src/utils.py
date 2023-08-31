@@ -1,3 +1,8 @@
+import json
+
+from keys import KeyWrapper
+
+
 def parse_color(color: str | list[int]) -> tuple[int, int, int]:
     if isinstance(color, str):
         if color[0] == "#":
@@ -16,3 +21,16 @@ def parse_color(color: str | list[int]) -> tuple[int, int, int]:
         return int(r), int(g), int(b)
 
     raise NotImplementedError
+
+
+def load_config():
+    with open("config.json") as file:
+        config = json.load(file)
+    layers = config.get("layers", [])
+    for layer in layers:
+        cw = layer.get("encoder", {}).get("cw")
+        layer["encoder"]["cw"] = KeyWrapper(cw)
+
+        ccw = layer.get("encoder", {}).get("ccw")
+        layer["encoder"]["ccw"] = KeyWrapper(ccw)
+    return config
