@@ -19,7 +19,10 @@ class KeyWrapper:
         ConsumerControl(usb_hid.devices): ConsumerControlCode,
     }
 
-    def __init__(self, keys: str | list[str]) -> None:
+    def __init__(self, keys: str | list[str] | None) -> None:
+        if keys is None:
+            keys = []
+
         if isinstance(keys, str):
             keys = [keys]
 

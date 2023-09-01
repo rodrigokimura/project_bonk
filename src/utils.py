@@ -1,4 +1,5 @@
 import json
+import math
 
 from keys import KeyWrapper
 
@@ -33,4 +34,25 @@ def load_config():
 
         ccw = layer.get("encoder", {}).get("ccw")
         layer["encoder"]["ccw"] = KeyWrapper(ccw)
+
+        stick = layer.get("stick", {})
+        if stick.get("mode") == "dpad":
+            for d in ("up", "down", "left", "right"):
+                stick[d] = KeyWrapper(stick.get(d))
     return config
+
+
+def position_to_direction(position: tuple[int | float, int | float] | None):
+    if position is None:
+        return None
+    x, y = position
+    angle = math.atan2(y, x)
+    angle += math.pi  # zero is left, rotates cw
+    angle /= math.pi / 2
+    if 0.5 < angle < 1.5:
+        return "up"
+    if 1.5 < angle < 2.5:
+        return "right"
+    if 2.5 < angle < 3.5:
+        return "down"
+    return "left"

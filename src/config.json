@@ -1,13 +1,10 @@
 {
   "layers": [
     {
-      "name": "custom1",
+      "name": "media",
       "color": "#e63946",
       "stick": {
-        "x": 1,
-        "y": 1,
-        "on_move_start": "",
-        "on_move_end": ""
+        "mode": "mouse"
       },
       "encoder": {
         "cw": "volume_increment",
@@ -15,18 +12,48 @@
       }
     },
     {
-      "name": "custom2",
+      "name": "navigation",
       "color": "#3a86ff",
-      "stick": "wheel",
+      "stick": {
+        "mode": "dpad",
+        "up": [
+          "control",
+          "gui",
+          "k"
+        ],
+        "down": [
+          "control",
+          "gui",
+          "j"
+        ],
+        "left": [
+          "control",
+          "gui",
+          "h"
+        ],
+        "right": [
+          "control",
+          "gui",
+          "l"
+        ]
+      },
       "encoder": {
-        "cw": "up_arrow",
-        "ccw": "down_arrow"
+        "cw": [
+          "gui",
+          "l"
+        ],
+        "ccw": [
+          "gui",
+          "h"
+        ]
       }
     },
     {
       "name": "custom3",
       "color": "#a7c957",
-      "stick": "wheel",
+      "stick": {
+        "mode": "mouse"
+      },
       "encoder": {
         "cw": [
           "shift",
@@ -41,11 +68,20 @@
     {
       "name": "custom4",
       "color": "#ffbe0b",
-      "stick": "wheel",
+      "stick": {
+        "mode": "mouse"
+      },
       "encoder": {
-        "cw": "l",
-        "ccw": "h"
+        "cw": [
+          "gui",
+          "l"
+        ],
+        "ccw": [
+          "gui",
+          "h"
+        ]
       }
     }
-  ]
+  ],
+  "brightness": 0.1
 }
